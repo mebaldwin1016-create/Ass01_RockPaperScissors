@@ -67,18 +67,18 @@ public class Ass01_RPS {
             else
             {
                 trash = in.nextLine();
-                System.out.println("You must enter a number");
+                System.out.println("You entered a wrong value");
                 done = false;
             }
-            if (continueYN.equals("N"))
-            {
-                playAgain = false;
-            }
-            if (continueYN.equals("Y"))
-            {
-                playAgain = true;
-            }
-        }while(playAgain);
 
+        }while(playAgain);
+        if (continueYN.equals("N"))
+        {
+            playAgain = false;
+        }
+        if (continueYN.equals("Y"))
+        {
+            playAgain = true;
+        }
     }
 }
