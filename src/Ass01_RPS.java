@@ -3,28 +3,55 @@ import java.util.Scanner;
 public class Ass01_RPS {
     public static void main(String[] args)
     {
+        boolean playAgain = false;
+        boolean move1 = false;
+        boolean move2 = false;
+        String player1 = "";
+        String player2 = "";
+        String cont = "";
         Scanner in = new Scanner(System.in);
-        String playA = "R";
-        String playB = "P";
-        String continueYN = "Y/N";
-        boolean playAgain = true;
-
-        boolean done = false;
-        String newLine = "";
-        String trash = "";
 
         do
         {
-            System.out.println("Player A, enter R, P, or S");
-            in.nextLine();
-            if (playA.equalsIgnoreCase("R"))
+            move1 = false;
+            move2 = false;
+            do
+            {
+                System.out.println("\nPlayer 1 please enter your move. [R, P, or S]: ");
+                player1 = in.nextLine();
+                player1 = player1.toUpperCase();
+                if(player1.matches("[RPS]"))
+                {
+                    move1 = true;
+                }
+                else
+                {
+                    System.out.println("\nInvalid move, please try again, must enter [R,P,S]");
+                }
+            } while (!move1);
+            do
+            {
+                System.out.println("\nPlayer 2 please enter your move. [R, P, or S]: ");
+                player2 = in.nextLine();
+                player2 = player2.toUpperCase();
+                if(player2.matches("[RPS]"))
+                {
+                    move2 = true;
+                }
+                else
+                {
+                    System.out.println("\nInvalid move, please try again, must enter [R,P,S]");
+                }
+            } while (!move2);
+
+            if (player1.equalsIgnoreCase("R"))
             {
                 System.out.println("Player B, enter R, P, or S");
-                if (playB.equalsIgnoreCase("R"))
+                if (player2.equalsIgnoreCase("R"))
                 {
                     System.out.println("It's a tie R x R");
                 }
-                else if (playB.equalsIgnoreCase("P"))
+                else if (player2.equalsIgnoreCase("P"))
                 {
                     System.out.println("Paper covers Rock Player B wins");
                 }
@@ -33,14 +60,14 @@ public class Ass01_RPS {
                     System.out.println("Rock breaks Scissors Player A wins");
                 }
             }
-            else if (playA.equalsIgnoreCase("P"))
+            else if (player1.equalsIgnoreCase("P"))
             {
 
-                if (playB.equalsIgnoreCase("R"))
+                if (player2.equalsIgnoreCase("R"))
                 {
                     System.out.println("Paper covers Rock Player A wins");
                 }
-                else if (playB.equalsIgnoreCase("P"))
+                else if (player2.equalsIgnoreCase("P"))
                 {
                     System.out.println("It's a tie P x P");
                 }
@@ -49,13 +76,13 @@ public class Ass01_RPS {
                     System.out.println("Scissors cuts Paper Player B wins");
                 }
             }
-            else if (playA.equalsIgnoreCase("S"))
+            else if (player1.equalsIgnoreCase("S"))
             {
-                if (playB.equalsIgnoreCase("R"))
+                if (player2.equalsIgnoreCase("R"))
                 {
                     System.out.println("Rock breaks Scissors Player B wins");
                 }
-                else if (playB.equalsIgnoreCase("P"))
+                else if (player2.equalsIgnoreCase("P"))
                 {
                     System.out.println("Scissors cuts Paper Player A wins");
                 }
@@ -66,19 +93,20 @@ public class Ass01_RPS {
             }
             else
             {
-                trash = in.nextLine();
-                System.out.println("You entered a wrong value");
-                done = false;
+
+            }
+            System.out.println("\n Do you wish to play again [Y/N]: ");
+            cont = in.nextLine().toUpperCase();
+            if (cont.equals("Y"))
+            {
+                playAgain = true;
+            }
+            else
+            {
+                playAgain = false;
             }
 
         }while(playAgain);
-        if (continueYN.equals("N"))
-        {
-            playAgain = false;
-        }
-        if (continueYN.equals("Y"))
-        {
-            playAgain = true;
-        }
+        System.out.println("Stored vars: " + player1 + " " + player2);
     }
 }
